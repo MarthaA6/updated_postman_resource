@@ -35,6 +35,9 @@ jobs:
       - name: Run updated_post_resource
         run: npx newman run updated_post_resource.postman_collection.json --env-var BaseUrl=https://jsonplaceholder.typicode.com/posts/1 --reporter-htmlextra-export reports/report.html
 
+      - name: Run new_branch_2
+        run: npx newman run MARTHA_CONFIXHUB_2.postman_collection.json --env-var BaseURL=https://api.restful-api.dev --env-var x-api-key=41fc3315-1f57-45ba-9c06-2f13b08e2962 --reporter-htmlextra-export reports/report.html      
+
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
         with:
