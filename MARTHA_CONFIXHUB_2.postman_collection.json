@@ -1,0 +1,701 @@
+{
+  "info": {
+    "_postman_id": "24a91df9-f691-424c-813d-6cf55917c4c0",
+    "name": "MARTHA_CONFIXHUB_2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26160636",
+    "_collection_link": "https://go.postman.co/collection/26160636-24a91df9-f691-424c-813d-6cf55917c4c0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Add an object",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script",
+              "",
+              "pm.test(\"Status code is successful\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+              "});",
+              "",
+              "pm.test(\"Response is JSON\", function () {",
+              "    pm.response.to.be.json;",
+              "});",
+              "",
+              "//pm.test(\"Response time is less than 1 second\", function () {",
+              "  //  pm.expect(pm.response.responseTime).to.be.below(1000);",
+              "//});",
+              "",
+              "//Script for POST – Add Object",
+              "",
+              "let response = pm.response.json();",
+              "",
+              "pm.test(\"Object created successfully\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+              "});",
+              "",
+              "pm.test(\"Response contains ID\", function () {",
+              "    pm.expect(response).to.have.property(\"id\");",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"object_id\", response.id);",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{vault:authorization-secret---uuid}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Lenovo Legion 589\",\r\n  \"data\": {\r\n    \"year\": 2025,\r\n    \"price\": 80000,\r\n    \"CPU model\": \"Intel Core Ultra 9 275HX\",\r\n    \"Hard disk size\": \"1TBb\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add an object using an existing details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for POST – Existing Object\r",
+              "\r",
+              "pm.test(\"Status code should be 200 for existing ID\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Samsung Galaxy S24 FE 5G\",\r\n  \"data\": {\r\n    \"year\": 2025,\r\n    \"price\": 128800,\r\n    \"CPU model\": \"Intel Core i9\",\r\n    \"Hard disk size\": \"128GB/256GB\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch the new object",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 3 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for GET – Fetch Single Object\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains object ID\", function () {\r",
+              "    pm.expect(response).to.have.property(\"id\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{vault:authorization-secret---uuid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects/ff8081819d150699019d2fa727553693",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects",
+            "ff8081819d150699019d2fa727553693"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch all the objects with the new object included",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for GET – Fetch all Objects\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response contains object ID\", function () {\r",
+              "//    pm.expect(response).to.have.property(\"id\");\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{vault:authorization-secret---uuid}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Lenovo Legion 5\",\r\n  \"data\": {\r\n    \"year\": 2025,\r\n    \"price\": 80000,\r\n    \"CPU model\": \"Intel Core Ultra 9 275HX\",\r\n    \"Hard disk size\": \"1TBb\"\r\n  }\r\n}"
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update the new object",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "  //  pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for PUT – Update Object\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Object updated successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response contains updatedAt field\", function () {\r",
+              " //   pm.expect(response).to.have.property(\"updatedAt\");\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Updated Google Pixel Galaxy\",\r\n    \"data\": {\r\n        \"year\": 2010,\r\n        \"price\": 356000,\r\n        \"CPU model\": \"i7\",\r\n        \"Hard disk size\": \"24 MB\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects/ff8081819cd4022c019ce65d1ba92089",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects",
+            "ff8081819cd4022c019ce65d1ba92089"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update the new object using an existing details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              " //   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for PUT –Existing Object\r",
+              "\r",
+              "pm.test(\"Status code should be 200 for valid ID\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Apple iPad Pro 13-Inch (2025/M4\",\r\n    \"data\": {\r\n        \"year\": 1995,\r\n        \"price\": 80000,\r\n        \"CPU model\": \"Apple M4 Chip\",\r\n        \"Hard disk size\": \"256GB\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects/ff8081819cd4022c019ce65d1ba92089",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects",
+            "ff8081819cd4022c019ce65d1ba92089"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partially update the new object",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              " //   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for PATCH – Partial Update\r",
+              "\r",
+              "pm.test(\"Partial update successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{vault:authorization-secret---uuid}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Samsung Galaxy S24 FE 5G\",\r\n    \"data\": {\r\n        \"year\": 2025,\r\n        \"price\": 128800,\r\n        \"CPU model\": \"Orange, Mango, pineapple\",\r\n        \"Hard disk size\": 3\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects/ff8081819cd4022c019ce65d1ba92089",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects",
+            "ff8081819cd4022c019ce65d1ba92089"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete the new object",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              " //   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for DELETE Object\r",
+              "\r",
+              "//pm.test(\"Object deleted successfully\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "x-api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{BaseURL}}/collections/products/objects/ff8081819d150699019d2faef32c369f",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "collections",
+            "products",
+            "objects",
+            "ff8081819d150699019d2faef32c369f"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "41fc3315-1f57-45ba-9c06-2f13b08e2962",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "value": ""
+    },
+    {
+      "key": "object_id",
+      "value": ""
+    },
+    {
+      "key": "BaseURL",
+      "value": ""
+    }
+  ]
+}
