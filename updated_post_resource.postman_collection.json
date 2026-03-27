@@ -1,0 +1,1161 @@
+{
+  "info": {
+    "_postman_id": "e02899a3-d92e-4c12-8ff8-ba91571e764e",
+    "name": "updated_post_resource",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26160636",
+    "_collection_link": "https://go.postman.co/collection/26160636-e02899a3-d92e-4c12-8ff8-ba91571e764e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Fetch single post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for GET – Fetch Single Object\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains object ID\", function () {\r",
+              "    pm.expect(response).to.have.property(\"id\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/5",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch all post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for GET – Fetch all Objects\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response contains object ID\", function () {\r",
+              "//    pm.expect(response).to.have.property(\"id\");\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch non-exisitng post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for GET – Invalid ID / Non-existing Object\r",
+              "\r",
+              "pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/300",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "300"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for POST – Add Object\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Object created successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains ID\", function () {\r",
+              "    pm.expect(response).to.have.property(\"id\");\r",
+              "});\r",
+              "\r",
+              "pm.collectionVariables.set(\"object_id\", response.id);\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"today\": \"testing\",\r\n    \"app\": \"api\",\r\n    \"number\": 8\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post resource using an empty string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response time is less than 1 second\", function () {\r",
+              "//    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "//});\r",
+              "\r",
+              "//Script for POST – Invalid ID / Non-existing Object\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"today\": \"\",\r\n    \"app\": \"\",\r\n    \"number\": \"\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post resource using invalid details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for POST – Invalid ID / Non-existing Object\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//   pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"today\": \"testing\",\r\n    \"app\": \"api\",\r\n    \"userId\": \"abcd\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post resource using an existing detail",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for POST – Existing Object\r",
+              "\r",
+              "pm.test(\"Status code should be 200 for existing ID\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"userId\": 1,\r\n        \"id\": 6,\r\n        \"title\": \"dolorem eum magni eos aperiam quia\",\r\n        \"body\": \"ut aspernatur corporis harum nihil quis provident sequi\\nmollitia nobis aliquid molestiae\\nperspiciatis et ea nemo ab reprehenderit accusantium quas\\nvoluptate dolores velit et doloremque molestiae\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PUT – Update Object\r",
+              "\r",
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Object updated successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "//pm.test(\"Response contains updatedAt field\", function () {\r",
+              " //   pm.expect(response).to.have.property(\"updatedAt\");\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"fuel\",\r\n    \"body\": \"car\",\r\n    \"userId\": 5\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/5",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update post resource using an empty string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PUT – Empty String\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"\",\r\n    \"title\": \"\",\r\n    \"body\": \"\",\r\n    \"userId\": \"\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/5",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update post resource using invalid details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PUT – Invalid ID / Non-existing Object\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"abcd\",\r\n    \"title\": \"123\",\r\n    \"body\": \"word\",\r\n    \"userId\": \"game\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/5",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update post resource using an existing post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PUT –Existing Object\r",
+              "\r",
+              "pm.test(\"Status code should be 200 for valid ID\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"userId\": 1,\r\n    \"id\": 5,\r\n    \"title\": \"nesciunt quas odio\",\r\n    \"body\": \"repudiandae veniam quaerat sunt sed\\nalias aut fugiat sit autem sed est\\nvoluptatem omnis possimus esse voluptatibus quis\\nest aut tenetur dolor neque\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/5",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partially update a post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PATCH – Partial Update\r",
+              "\r",
+              "pm.test(\"Partial update successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"book\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/9",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partially update a post resource using an empty string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PATCH – Empty String\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"\": \"\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/9",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partially update a post resource using invalid detail",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PATCH – Invalid ID / Non-existing Object\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"foo\",\r\n  }"
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/7879",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "7879"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partially update the post resource using an existing comment",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "//pm.test(\"Status code is successful\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "//});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for PATCH – Invalid ID / Non-existing Object\r",
+              "\r",
+              "//pm.test(\"Status code should be 404 for invalid ID\", function () {\r",
+              "//    pm.expect(pm.response.code).to.be.oneOf([400,404]);\r",
+              "//});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"foo\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/9",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for DELETE Object\r",
+              "\r",
+              "pm.test(\"Object deleted successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a deleted post resource",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for DELETE Object\r",
+              "\r",
+              "pm.test(\"Object deleted successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a post resources using an invalid ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for DELETE Object\r",
+              "\r",
+              "pm.test(\"Object deleted successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/asdfghjkl1234567890",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "asdfghjkl1234567890"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a post resources using an invalid ID Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Universal Script\r",
+              "\r",
+              "pm.test(\"Status code is successful\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1 second\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "//Script for DELETE Object\r",
+              "\r",
+              "pm.test(\"Object deleted successfully\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/600",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "600"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "object_id",
+      "value": ""
+    }
+  ]
+}
