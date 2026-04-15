@@ -33,10 +33,11 @@ jobs:
         run: mkdir -p ./reports
 
       - name: Run updated_post_resource
-        run: npx newman run updated_post_resource.postman_collection.json --env-var BaseUrl=https://jsonplaceholder.typicode.com/posts/1 --reporter-htmlextra-export reports/report.html
+        run: npx newman run updated_post_resource.postman_collection.json --env-var BaseUrl=https://jsonplaceholder.typicode.com/posts/1 --reporters htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
         with:
           name: newman-report
           path: ./reports/report.html
+      
